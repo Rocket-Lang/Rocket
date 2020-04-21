@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <regex>
-#include <src/include/lexer/lexer_classes.h>
-#include <src/include/lexer/lexer.h>
-#include <src/include/lexer/tokenizer.h>
+#include <Rocket/src/include/lexer/lexer_classes.h>
+#include <Rocket/src/include/lexer/lexer.h>
+#include <Rocket/src/include/lexer/tokenizer.h>
+
 
 
 static void lexing(Tokenizer tokenizer, String_Buffer sbuffer){

@@ -1,7 +1,7 @@
 #include <iostream>
-#include <src/include/lexer/lexer_classes.h>
-#include <src/include/lexer/lexer.h>
-#include <src/include/parser/ast.h>
+#include <Rocket/src/include/lexer/lexer_classes.h>
+#include <Rocket/src/include/lexer/lexer.h>
+#include <Rocket/src/include/parser/ast.h>
 
 
 int main(){

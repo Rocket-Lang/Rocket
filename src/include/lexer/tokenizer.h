@@ -1,6 +1,6 @@
 #include <string>
-#include <src/include/lexer/lexer_classes.h>
-#include <src/include/tokens/boost_tokens.h>
+#include <Rocket/src/include/lexer/lexer_classes.h>
+#include <Rocket/src/include/tokens/rocket_tokens.h>
 #include <vector>
 
 static std::vector<std::string> list;
