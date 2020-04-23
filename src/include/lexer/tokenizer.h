@@ -116,6 +116,18 @@ void get_types(std::string token){
     if(token.compare("int")){
         create_token("int", INT), add_token("int");
     }
+    else if(token.compare("type")){
+        create_token("type", TYPE), add_token("type");
+    }
+    else if(token.compare("import")){
+        create_token("import", IMPORT), add_token("import");
+    }
+    else if(token.compare("USE")){
+        create_token("use", USE), add_token("use");
+    }
+    else if(token.compare("FUNC")){
+        create_token("func", FUNC), add_token("func");
+    }
     else if(token.compare("string")){
         create_token("string", STRING), add_token("string");
     }

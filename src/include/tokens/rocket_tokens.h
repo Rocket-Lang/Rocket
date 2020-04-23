@@ -17,6 +17,7 @@ enum datatype_tokens{
 
 enum expression_tokens{
     FUN,
+    FUNC,
     INCLUDE,
     IF,
     IFNOT,
@@ -31,7 +32,10 @@ enum expression_tokens{
     OR,
     WHILE,
     FOR,
-    DO
+    DO,
+    TYPE,
+    IMPORT,
+    USE
 };
 
 enum other_tokens{
