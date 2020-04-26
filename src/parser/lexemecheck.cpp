@@ -16,7 +16,7 @@ namespace rocket{
 
 
             //checks if node value is a keyword for a new child
-            if(next_node.value == "fun" || next_node.value == "func" ){
+            if(next_node.value == "fun" || next_node.value == "func" || next_node.value == "type"){
                 
                 return true;
 
