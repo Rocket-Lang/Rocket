@@ -17,7 +17,7 @@ namespace rocket{
 
             //checks if node value is a keyword for a new child
             if(next_node.value == "fun" || next_node.value == "func" || next_node.value == "type"){
-                
+
                 return true;
 
             }
@@ -29,12 +29,12 @@ namespace rocket{
 
         //Checks if Root Node is already set
         bool is_root_set(std::string root_node_value, std::string root_node_type){
-            
+
 
             //checks if root node type and value not equals an empty string
             if(root_node_type != "" && root_node_value != ""){
 
-                return true;   
+                return true;
 
             }
 
@@ -42,6 +42,7 @@ namespace rocket{
 
         }
 
-    }
+
+        
 
 }
