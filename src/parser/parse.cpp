@@ -6,6 +6,7 @@
 #include "Rocket/src/lexer/lexe.cpp"
 #include "Rocket/src/parser/ast_llvm_base.cpp"
 #include "Rocket/src/compiler/compiler.cpp"
+#include "Rocket/src/parser/parsekey.cpp"
 
 
 namespace rocket{
@@ -24,22 +25,28 @@ namespace rocket{
       while (point <= length){
 
 
-        if(cur_token() == "("){
+        if(rocket::parser::is_paran_expr(cur_token())){
 
           //if value is a ( call paranthese expression parser
           paran_expr();
 
         }
-        else if(cur_token() == ){
+        else if(rocket::parser::is_numeric(cur_token())){
 
           //if value is numeric it calls the Number Expression Parser
           number_expr();
 
         }
-        else if(cur_token() == ){
+        else if(rocket::parser::is_function_expr(cur_token())){
 
           //if value is a function expression
           function_parser();
+
+        }
+        else if(rocket::parser::is_type(cur_token())){
+
+          //if value is a type keyword
+          identifier_tokens();
 
         }
 
@@ -68,16 +75,23 @@ namespace rocket{
     //parses Number Expressions
     static std::unique_ptr<ExprAst> number_expr(){
 
-      //code coming soon ....
+      auto result = std::make_unique<NumberExprAST>(NumVal);
+
+      //skip the number
+      getNextToken();
+
+      //return result
+      return std::move(result);
 
     }
 
 
     //parses Expressions
+    //code not ready yet
     static std::unique_ptr<ExprAst> parse_expr(){
 
       std::string expression;
-      if(cur_token() == ")"){
+      if(cur_token() == "("){
 
         return;
       }
@@ -100,9 +114,11 @@ namespace rocket{
 
       //gets next token
       get_next_token();
+
       auto parse_ret = parse_expr();
 
-      //checks that the next token is not
+
+      //checks that the next token is there
       if(!parse_ret){
         return nullptr;
       }
@@ -119,10 +135,104 @@ namespace rocket{
     }
 
 
-    //parses Function Expressions
-    static std::unique_ptr<ExprAst> function_parser(){
+    //gets the type and identifier tokens and returns it
+    static std::unique_ptr<ExprAst> identifier_tokens(){
 
-      //code coming soon ...
+      std::string identifier_name = IdentifierStr;
+
+      //gets next token and skips type token
+      get_next_token();
+
+      //gets the current identifier token and
+      //puts it into the identifier_token variable
+      auto identifier_token = cur_token();
+
+
+      //if theres no identifier token returns null pointer
+      if(!identifier_token){
+        return nullptr;
+      }
+
+
+      //returns the expression
+      return std::make_unique<CallExprAST>(identifier_name, identifier_token);
+
+
+    }
+
+
+
+    //parses Function call Expression
+    static std::unique_ptr<FunctionAst> function_parser(){
+
+      //get function name
+      auto func = prototype_parser();
+
+      //if func is empty return null pointer
+      if(!func){
+
+        return nullptr;
+      }
+
+      //parse expression
+      if (auto E = parse_expr()){
+
+        return std::make_unique<FunctionAST>(std::move(Proto), std::move(E));
+      }
+
+      return nullptr;
+
+
+    }
+
+
+    //parses Function
+    static std::unique_ptr<PrototypeAst> prototype_parser(){
+
+      //skips the func / fun declaration token
+      get_next_token();
+
+      //get identifier from other function
+      auto identifier = identifier_tokens();
+
+      std::string function_name = IdentifierStr;
+
+
+      if(!identifier){
+        LogError("identifier expected");
+        return nullptr;
+      }
+
+      //get next token and check if these are parantheses
+      get_next_token();
+
+      if(cur_token != "("){
+        LogError("( expected");
+      }
+
+      std::vector<std::string> parameters;
+
+      //get next token to skip the opening parathese
+      get_next_token()
+
+      //gets every identifier in the parantheses
+      while(cur_token() != ")"){
+
+        //skips the type token
+        get_next_token();
+
+        //gets the identifier
+        parameters.push_back(cur_token());
+
+
+      }
+
+      //moves the parameters
+      return std::make_unique<PrototypeAST>(function_name, std::move(parameters));
+
+
+      }
+
 
 
     }

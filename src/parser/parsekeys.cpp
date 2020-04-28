@@ -22,6 +22,8 @@ namespace rocket{
 
     }
 
+
+    //checks if the cur_token is paranthese expression
     bool is_paran_expr(std::string cur_token){
 
       if(cur_token == "("){
@@ -35,9 +37,52 @@ namespace rocket{
 
     }
 
-    bool is_numeric(){
 
-      if(cur_token)
+    //checks if the cur_token is numeric
+    bool is_numeric(std::string cur_token){
+
+      //gets the length of the token
+      int token_length = cur_token.length();
+
+      for(int i = 0; i <= token_length; i++){
+
+        //gets every single char of the string to check if its a
+        //numeric one
+        auto check = cur_token[i];
+
+        if(check < 47 &&  check > 58){
+
+          //if its not numeric -> returns false
+          return false;
+
+        }
+
+        //if its numeric -> returns true
+        return true;
+
+
+      }
+
+
+    //checks if the current token is a type keyword
+    bool is_type(std::string cur_token){
+
+      //check if type
+      if(cur_token == "int" || cur_token == "float" || cur_token == "double" ||
+         cur_token == "uint"|| cur_token == "char"  || cur_token == "string" ||
+         cur_token == "bool"|| cur_token == "byte"  ){
+
+
+           //if current token is a type keyword -> returns true
+           return true;
+
+      }
+
+      //if current token is not a type keyword -> returns false
+      return false;
+
+    }
+
 
     }
 
