@@ -14,6 +14,7 @@ namespace rocket{
   namespace parser{
 
     static int point;
+    static int line = 1;
 
 
     //starts the parsing process and depending on token calls different parsers
@@ -47,6 +48,18 @@ namespace rocket{
 
           //if value is a type keyword
           identifier_tokens();
+
+        }
+        else if(rocket::parser::is_asm(cur_token())){
+
+          //if value is a inline assembly keyword
+          asm_expr();
+
+        }
+        else if(cur_token() == "\n"){
+
+          //if value is a new line do nothing and continue
+
 
         }
 
@@ -86,25 +99,84 @@ namespace rocket{
     }
 
 
+    //parses inline assembly expressions
+    static std::unique_ptr<ExprAst> asm_expr(){
+
+      //skip the inline assembly keyword
+      get_next_token();
+
+      std::vector<std::string> asm_code
+
+      //if token is a opening bracket -> multiline inline assembly
+      if(cur_token() == "{"){
+
+        //skip opening bracket
+        get_next_token();
+
+
+        //get all tokens while there is not closing bracket
+        while(cur_token() != "}"){
+
+          asm_code.push_back(cur_token());
+
+          get_next_token();
+
+        }
+
+
+      }
+
+      //check if next token is not a opening bracket
+      if(cur_token() != "{"){
+
+        //get all tokens while there is no new line
+        while(cur_token() != "\n"){
+
+          //if there is not opening bracket -> oneline inline assembly
+          asm_code.push_back(cur_token());
+
+          get_next_token();
+
+      }
+
+
+      //Add the return statement
+      return make_unique<AsmAst> (std::move(asm_code));
+
+    }
+
+
     //parses Expressions
-    //code not ready yet
     static std::unique_ptr<ExprAst> parse_expr(){
 
-      std::string expression;
-      if(cur_token() == "("){
+      auto LHS = primary_parse();
 
-        return;
-      }
+      if (!LHS){
 
-      //appends new token while the current token is not a closing paranthese
-      while (cur_token() != ")"){
-
-        get_next_token();
-        expression.append(cur_token());
+        return nullptr;
 
       }
 
-      return expression;
+      return parse_rhs(0, std::move(LHS));
+    }
+
+
+    //parses left side of expression
+    static std::unique_ptr<ExprAst> primary_parse(){
+
+      //code coming soon ....
+
+
+    }
+
+
+    //merges LHS and RHS
+    static std::unique_ptr<ExprAst> parse_rhs(int precendence,
+      std::unique_ptr<ExprAst> LHS){
+
+      //code coming soon ....
+
+
 
     }
 
@@ -246,6 +318,12 @@ namespace rocket{
       rocket::lexer::lexeme next_node;
 
       auto next = next_node.at(point);
+
+      if(next.value == "\n"){
+
+        //if the next token is a new line add 1 to the line counter
+        rocket::parsing::line++;
+      }
 
       //at a call of the function goes forward by 1
       point++;

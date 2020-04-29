@@ -84,7 +84,23 @@ namespace rocket{
     }
 
 
+    //checks if the current token is a inline assembly keyword
+    bool is_asm(std::string cur_token){
+
+      //check if asm token
+      if(cur_token == "asm"){
+
+        //if the current token is a inline assembly keyword -> returns true
+        return true;
+
+      }
+
+      //if current token is not a inline assembly keyword -> returns false
+      return false;
+
     }
+
+
 
   }
 
