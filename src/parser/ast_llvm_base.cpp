@@ -24,9 +24,9 @@
 #include <vector>
 
 
-#include "Rocket/src/lexer/lexe.cpp"
-#include "Rocket/src/lexer/lexeme.cpp"
-#include "Rocket/src/parser/lexemecheck.cpp"
+#include "src/lexer/lexe.cpp"
+#include "src/lexer/lexeme.cpp"
+#include "src/parser/lexemecheck.cpp"
 
 using namespace llvm;
 

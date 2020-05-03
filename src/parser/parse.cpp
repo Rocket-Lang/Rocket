@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 
-#include "Rocket/src/lexer/lexe.cpp"
-#include "Rocket/src/parser/ast_llvm_base.cpp"
-#include "Rocket/src/compiler/compiler.cpp"
-#include "Rocket/src/parser/parsekey.cpp"
+#include "src/lexer/lexe.cpp"
+#include "src/parser/ast_llvm_base.cpp"
+#include "src/compiler/compiler.cpp"
+#include "src/parser/parsekey.cpp"
 
 
 namespace rocket{

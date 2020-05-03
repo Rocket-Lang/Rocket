@@ -22,8 +22,8 @@
 #include <memory>
 #include <string>
 
-#include "Rocket/src/compiler/compiler.cpp"
-#include "Rocket/src/parser/ast_llvm_base.cpp"
+#include "src/compiler/compiler.cpp"
+#include "src/parser/ast_llvm_base.cpp"
 
 using namespace llvm;
 
