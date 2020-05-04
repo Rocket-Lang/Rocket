@@ -3,10 +3,10 @@
 #include <iostream>
 #include <string>
 
-#include "Rocket/src/lexer/lexe.cpp"
-#include "Rocket/src/lexer/file_reader.cpp"
-#include "Rocket/src/parser/ast.cpp"
-#include "Rocket/src/parser/parse.cpp"
+#include "src/lexer/lexe.cpp"
+#include "src/lexer/file_reader.cpp"
+#include "src/parser/ast.cpp"
+#include "src/parser/parse.cpp"
 
 
 

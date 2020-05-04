@@ -12,7 +12,7 @@ CFLAGS=-Wall -O2
 DBGFLAGS=-g3 -g -fsanitize=address
 
 Rocket:
-    $(CC) $(CFLAGS) -o $(ODIR)/Rocket $(FILES)
+	$(CC) $(CFLAGS) -o $(ODIR)/Rocket $(FILES)
 
 debug:
-    $(CC) $(CFLAGS) $(DBGFLAGS) -o $(ODIR)/Rocket-Debug $(FILES)
+	$(CC) $(CFLAGS) $(DBGFLAGS) -o $(ODIR)/Rocket-Debug $(FILES)

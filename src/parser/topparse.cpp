@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "Rocket/parser/parse.cpp"
+#include "parser/parse.cpp"
 
 
 namespace rocket{
