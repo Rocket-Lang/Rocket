@@ -1,9 +1,7 @@
-#pragma once
-
 #include <string>
 #include <vector>
 
-#include "src/parser/ast.cpp"
+#include "ast_llvm_base.cpp"
 
 
 namespace rocket{

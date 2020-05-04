@@ -1,12 +1,10 @@
-#pragma once
-
 #include <string>
 #include <vector>
 
-#include "src/lexer/lexe.cpp"
-#include "src/parser/ast_llvm_base.cpp"
-#include "src/compiler/compiler.cpp"
-#include "src/parser/parsekey.cpp"
+#include "lexer/lexe.cpp"
+#include "ast_llvm_base.cpp"
+#include "compiler/compiler.cpp"
+#include "parsekey.cpp"
 
 
 namespace rocket{

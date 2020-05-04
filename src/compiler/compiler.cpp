@@ -1,5 +1,3 @@
-#pragma once
-
 #include <llvm/ADT/APFloat.h>
 #include <llvm/ADT/STLExtras.h>
 #include <llvm/IR/BasicBlock.h>
@@ -23,7 +21,7 @@
 #include <string>
 #include <vector>
 
-#include "src/parser/ast.cpp"
+#include "parser/ast.cpp"
 
 using namespace llvm;
 

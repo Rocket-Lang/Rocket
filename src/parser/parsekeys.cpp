@@ -1,5 +1,3 @@
-#pragma once
-
 #include <string>
 
 
@@ -62,6 +60,7 @@ namespace rocket{
 
 
       }
+    }
 
 
     //checks if the current token is a type keyword

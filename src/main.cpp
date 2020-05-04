@@ -1,12 +1,10 @@
-#pragma once
-
 #include <iostream>
 #include <string>
 
-#include "src/lexer/lexe.cpp"
-#include "src/lexer/file_reader.cpp"
-#include "src/parser/ast.cpp"
-#include "src/parser/parse.cpp"
+#include "lexer/lexe.cpp"
+#include "lexer/file_reader.cpp"
+#include "parser/ast_llvm_base.cpp"
+#include "parser/parse.cpp"
 
 
 

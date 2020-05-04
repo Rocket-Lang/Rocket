@@ -1,9 +1,7 @@
-#pragma once
-
 #include <string>
 #include <vector>
 
-#include "parser/parse.cpp"
+#include "parse.cpp"
 
 
 namespace rocket{

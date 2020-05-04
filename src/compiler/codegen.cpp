@@ -1,5 +1,3 @@
-#pragma once
-
 #include <llvm/ADT/APFloat.h>
 #include <llvm/ADT/STLExtras.h>
 #include <llvm/IR/BasicBlock.h>
@@ -22,8 +20,8 @@
 #include <memory>
 #include <string>
 
-#include "src/compiler/compiler.cpp"
-#include "src/parser/ast_llvm_base.cpp"
+#include "compiler.cpp"
+#include "parser/ast_llvm_base.cpp"
 
 using namespace llvm;
 
